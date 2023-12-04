@@ -8,7 +8,7 @@ app = Flask(__name__)
 from datetime import timedelta
 
 app.permanent_session_lifetime = timedelta(hours=48)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data-blog-2.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data-blog-4.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = '123'
 UPLOAD_FOLDER = 'app/static/img'

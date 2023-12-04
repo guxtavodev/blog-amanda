@@ -1,22 +1,30 @@
 {% extends 'base.html' %}
 
 {% block styled %}
-<link href="{{ url_for('static', filename='css/feed.css') }}" rel='stylesheet'>
+    <!-- Inclui o arquivo de estilo específico para a página de feed -->
+    <link href="{{ url_for('static', filename='css/feed.css') }}" rel='stylesheet'>
 {% endblock %}
 
 {% block content %}
-<main>
-  <div class="list-artigos">
-    {% for artigo in artigos %}
-    <article class="artigo">
-        <div class="image-container">
-            <img src="../static/img/{{artigo.img}}" alt="Imagem do Artigo">
-        </div>
-        <a href="/artigos/{{artigo.id}}">{{artigo.title}}</a>
-    </article>
+    <main>
+        <div class="list-artigos">
+            {% for artigo in artigos %}
+            <article class="artigo">
+                <!-- Container para a imagem do artigo -->
+                <div class="image-container">
+                    <img src="../static/img/{{artigo.img}}" alt="Imagem do Artigo">
+                </div>
 
-    {% endfor %}
- 
-  </div>
-</main>
+                <!-- Container para o título e resumo do artigo -->
+                <div style='display: flex; flex-direction: column;'>
+                    <!-- Link para acessar o artigo completo -->
+                    <a href="/artigos/{{artigo.id}}">{{artigo.title}}</a>
+                    <!-- Resumo do artigo -->
+                    <p style='margin-top: 0.7em;'>{{ artigo.resumo }}...</p>
+                
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    </main>
 {% endblock %}

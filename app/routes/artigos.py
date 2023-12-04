@@ -13,6 +13,10 @@ def homepage():
   artigos = Post.query.order_by(Post.pub_date.desc()).all()
   return render_template("index.html", artigos=artigos)
 
+def pegar_primeiras_letras(texto, numero_letras):
+  return texto[:numero_letras]
+
+
 
 @artigos_bp.route('/artigos/<id>')
 def artigo(id):
@@ -47,21 +51,6 @@ def deletar_artigo(id):
 
 @artigos_bp.route('/create', methods=["GET", "POST"])
 def createArtigo():
-  if request.method == 'POST':
-    file = request.files["img"]
-    if file and (file.filename.endswith('.jpg')
-                 or file.filename.endswith('.png')
-                 or file.filename.endswith('.jpeg')):
-      file.save(os.path.join(app.config['UPLOAD_FOLDER'], file.filename))
-    artigos = Post(title=request.form['title'],
-                   body=request.form['body'],
-                   body_markdown=markdown.markdown(request.form['body']),
-                   img=request.files['img'].filename,
-                   endpoint=request.form['title'].replace(" ", "-"),
-                   id=str(uuid.uuid4()))
-    db.session.add(artigos)
-    db.session.commit()
-    return redirect(url_for('artigos.artigos', id=artigos.id))
 
   return render_template("create-artigo.html")
 
@@ -79,6 +68,7 @@ def criarArt():
                  body_markdown=markdown.markdown(request.form['body']),
                  img=request.files['img'].filename,
                  endpoint=request.form['title'].replace(" ", "-"),
+                 resumo = request.form['resumo'],
                  id=str(uuid.uuid4()))
   db.session.add(artigos)
   db.session.commit()

@@ -10,14 +10,16 @@ class Post(db.Model):
   img = db.Column(db.String())
   id = db.Column(db.String(), primary_key=True)
   endpoint = db.Column(db.String())
+  resumo = db.Column(db.String(100))
 
-  def __init__(self, title, body, body_markdown, img, id, endpoint):
+  def __init__(self, title, body, body_markdown, img, id, resumo, endpoint):
     self.title = title
     self.body = body
     self.body_markdown = body_markdown
     self.img = img
     self.id = id
     self.endpoint = endpoint
+    self.resumo = resumo
 
 class Comentarios(db.Model):
   __tablename__ = "comentarios"
