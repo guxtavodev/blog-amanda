@@ -1,0 +1,9 @@
+.crt{
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+textarea{
+  height: 400px;
+}

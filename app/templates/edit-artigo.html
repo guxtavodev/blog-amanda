@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block styled %}
+<link href="{{ url_for('static', filename='css/create.css') }}" rel='stylesheet'>
+{% endblock %}
+
+{% block content %}
+<main>
+  <h2>Crie Artigo</h2>
+  <form action="/edit/artigo/{{artigo.id}}" method="POST" class='crt' enctype="multipart/form-data">
+    <input type="text" name='title' placeholder='Digite o título do artigo' value="{{artigo.title}}">
+    <textarea name='body' placeholder='Digite o conteúdo do artigo'>{{artigo.body}}</textarea>
+
+    <input type='submit' value='Publicar Conteúdo'>
+  </form>
+</main>
+{% endblock %}

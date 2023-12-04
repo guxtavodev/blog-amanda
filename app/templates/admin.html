@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block styled %}
+<link href="{{ url_for('static', filename='css/feed.css') }}" rel='stylesheet'>
+{% endblock %}
+
+{% block content %}
+<main>
+  <div class="list-artigos">
+    {% for artigo in artigos %}
+    <article class="artigo">
+        <div class="image-container">
+            <img src="../static/img/{{artigo.img}}" alt="Imagem do Artigo">
+        </div>
+        <a>{{artigo.title}}</a>
+<div style='display: flex; flex-direction: column; align-items: center; gap: 1em;'>
+      <a style='font-size: 20px;' href='/delete/artigo/{{artigo.id}}'><i class="fa-solid fa-trash"></i></a>
+      <a style='font-size: 20px;' href='/edit/artigo/{{artigo.id}}'><i class="fa-solid fa-pen-to-square"></i></a>
+</div>
+    </article>
+
+    {% endfor %}
+
+  </div>
+</main>
+{% endblock %}

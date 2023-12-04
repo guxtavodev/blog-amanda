@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block styled %}
+<link href="{{ url_for('static', filename='css/artigo.css') }}" rel='stylesheet'>
+{% endblock %}
+
+{% block content %}
+<main>
+  <div>
+    <h2>{{artigo.title}}</h2>
+    <img src="../static/img/{{artigo.img}}">
+  </div>
+
+  <div class='conteudo-div'>
+    <p>{{artigo.body_markdown | safe }}</p>
+  </div>
+</main>
+
+<main>
+  <div>
+    <h2>Criar Comentário</h2>
+    <form action='/create/comentario/{{artigo.id}}' method='POST' style='display: flex; flex-direction: column; gap: 0.5em;'>
+      <input type='text' name='nome' placeholder='Digite seu nome' required>
+      <input type='text' name='comentario' placeholder='Digite aqui seu comentário' required>
+      <input type='submit' value='Publicar Comentário'>
+      <small>*Seu comentário não poderá ser deletado após a postagem.</small>
+    </form>
+  </div>
+
+  <div class='list-comentarios'>
+    {% for cmt in comentarios %}
+    <p><strong>{{cmt.autor}}:</strong> {{cmt.text}}</p>
+    {% endfor %}
+  </div>
+</main>
+{% endblock %}

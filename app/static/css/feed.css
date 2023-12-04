@@ -1,0 +1,33 @@
+.list-artigos{
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  margin-top: 1em;
+}
+
+article{
+  display: flex;
+  gap: 1em;
+  align-items: center;
+  border: 0.5px solid #000;
+  border-radius: 6px;
+  padding: 10px;
+}
+
+article a{
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+article img{
+  width: 100px;
+  border-radius: 7px;
+}
+
+.article {
+    width: 200px; /* Largura desejada do quadrado */
+    height: 200px; /* Altura desejada do quadrado */
+    overflow: hidden; /* Garante que qualquer conteúdo que ultrapasse o quadrado seja oculto */
+}
